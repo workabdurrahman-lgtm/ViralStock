@@ -11,7 +11,7 @@
 		results = [];
 
 		try {
-			const response = await fetch('/api/search', {
+			const response = await fetch('http://localhost:8080/api/search', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
@@ -34,7 +34,7 @@
 
 	async function downloadVideo(videoUrl: string) {
 		try {
-			const response = await fetch('/api/download', {
+			const response = await fetch('http://localhost:8080/api/download', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'

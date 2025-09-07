@@ -1,0 +1,17 @@
+# Dependencies
+/frontend/node_modules
+/backend/vendor
+
+# Build artifacts
+/frontend/build
+/backend/main
+
+# OS-specific
+.DS_Store
+*.swo
+*.swp
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

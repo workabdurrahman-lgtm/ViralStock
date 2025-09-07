@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+
+	"github.com/rs/cors"
 )
 
 type searchRequest struct {
@@ -80,11 +82,22 @@ func searchHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	http.HandleFunc("/api/search", searchHandler)
-	http.HandleFunc("/api/download", downloadHandler)
+	mux := http.NewServeMux()
+	mux.HandleFunc("/api/search", searchHandler)
+	mux.HandleFunc("/api/download", downloadHandler)
+
+	// CORS configuration
+	c := cors.New(cors.Options{
+		AllowedOrigins:   []string{"http://localhost:5173"},
+		AllowedMethods:   []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
+		AllowedHeaders:   []string{"Content-Type", "Authorization"},
+		AllowCredentials: true,
+	})
+
+	handler := c.Handler(mux)
 
 	fmt.Println("Server starting on port 8080...")
-	if err := http.ListenAndServe(":8080", nil); err != nil {
+	if err := http.ListenAndServe(":8080", handler); err != nil {
 		fmt.Printf("Error starting server: %s\n", err)
 	}
 }

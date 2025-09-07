@@ -72,12 +72,12 @@
 				type="text"
 				bind:value={keyword}
 				placeholder="Enter a keyword..."
-				class="flex-grow rounded-l-md border border-gray-300 p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+				class="flex-grow rounded-l-md border-2 border-green-500 p-2 focus:outline-none focus:ring-2 focus:ring-green-500"
 				on:keydown={(e) => e.key === 'Enter' && search()}
 			/>
 			<button
 				on:click={search}
-				class="rounded-r-md bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
+				class="rounded-r-md bg-green-500 px-4 py-2 text-white hover:bg-green-600 border-2 border-green-500"
 				disabled={loading}
 			>
 				{#if loading}
@@ -91,7 +91,7 @@
 		{#if loading}
 			<div class="mt-8 w-full">
 				<div class="h-2 w-full overflow-hidden rounded-full bg-gray-200">
-					<div class="h-full animate-pulse rounded-full bg-blue-500" style="width: 50%" />
+					<div class="h-full animate-pulse rounded-full bg-green-500" style="width: 50%"></div>
 				</div>
 				<p class="mt-2 text-center text-sm text-gray-500">Searching for videos...</p>
 			</div>
@@ -109,7 +109,7 @@
 						<div class="p-4">
 							<button
 								on:click={() => downloadVideo(result.videoUrl)}
-								class="w-full rounded-md bg-green-500 px-4 py-2 text-white hover:bg-green-600"
+								class="w-full rounded-md bg-green-500 px-4 py-2 text-white hover:bg-green-600 border-2 border-green-500"
 							>
 								Download
 							</button>
